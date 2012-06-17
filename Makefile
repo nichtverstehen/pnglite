@@ -8,13 +8,13 @@ all : $(LIB_NAME)
 pnglite.o : pnglite.c pnglite.h
 	$(CC) -c -opnglite.o pnglite.c -Wall
 
-$(LIB_NAME) : pnglite.o
-	ar -r $(LIB_NAME) pnglite.o
+lib%.a : %.o
+	ar -r $@ $<
 
-$(INSTALL_PREFIX)/lib/$(LIB_NAME) : $(LIB_NAME)
+$(INSTALL_PREFIX)/lib/% : %
 	install -D $< $@
 
-$(INSTALL_PREFIX)/include/pnglite.h : pnglite.h
+$(INSTALL_PREFIX)/include/%.h : %.h
 	install -D $< $@
 
 .PHONY : install
