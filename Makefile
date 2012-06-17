@@ -11,6 +11,9 @@ pnglite.o : pnglite.c pnglite.h
 lib%.a : %.o
 	ar -r $@ $<
 
+lib%.so : %.o
+	$(CC) -shared -o $@ $<
+
 $(INSTALL_PREFIX)/lib/% : %
 	install -D $< $@
 
