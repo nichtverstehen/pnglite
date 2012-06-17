@@ -6,7 +6,7 @@ INSTALL_PREFIX = /usr/local
 all : $(LIB_NAME)
 
 pnglite.o : pnglite.c pnglite.h
-	$(CC) -c -opnglite.o pnglite.c -Wall
+	$(CC) -fpic -c -opnglite.o pnglite.c -Wall
 
 lib%.a : %.o
 	ar -r $@ $<
